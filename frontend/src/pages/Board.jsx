@@ -3,6 +3,7 @@ import { DragDropContext } from '@hello-pangea/dnd';
 import api from '../api/axios';
 import Column from '../components/Column';
 import ApplicationModal from '../components/ApplicationModal';
+import Navbar from '../components/Navbar';
 
 const STATUSES = ['saved', 'applied', 'phone_screen', 'interview', 'offer', 'rejected', 'ghosted'];
 
@@ -57,7 +58,7 @@ const Board = () => {
   return (
     <DragDropContext onDragEnd={onDragEnd}>
       <div>
-        <button onClick={() => setShowModal(true)}>+ Add Application</button> {/* NEW */}
+        <Navbar onAdd={() => setShowModal(true)} /> {/* NEW */}
         <div className="board">
           {STATUSES.map(status => (
             <Column
@@ -68,7 +69,7 @@ const Board = () => {
             />
           ))}
         </div>
-        {showModal && <ApplicationModal onClose={() => setShowModal(false)} onAdd={handleAdd} />} {/* NEW */}
+        {showModal && <ApplicationModal onClose={() => setShowModal(false)} onAdd={handleAdd} />}
       </div>
     </DragDropContext>
   );
