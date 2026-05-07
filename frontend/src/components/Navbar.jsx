@@ -1,5 +1,6 @@
 import { useAuth } from '../context/AuthContext';
 import { useNavigate } from 'react-router-dom';
+import './Navbar.css';
 
 const Navbar = ({ onAdd }) => {
   const { user, logout } = useAuth();
@@ -15,8 +16,8 @@ const Navbar = ({ onAdd }) => {
       <span className="navbar-brand">Ghosted</span>
       <div className="navbar-actions">
         <span>{user?.name}</span>
-        <button onClick={onAdd}>+ Add Application</button>
-        <button onClick={handleLogout}>Logout</button>
+        <button className="btn-primary" onClick={onAdd}>+ Add Application</button>
+        <button className="btn-ghost" onClick={handleLogout}>Logout</button>
       </div>
     </nav>
   );

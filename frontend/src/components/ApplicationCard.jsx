@@ -1,3 +1,4 @@
+import './ApplicationCard.css';
 import { Draggable } from '@hello-pangea/dnd';
 
 const ApplicationCard = ({ application, index }) => {
@@ -12,9 +13,9 @@ const ApplicationCard = ({ application, index }) => {
           {...provided.draggableProps}
           {...provided.dragHandleProps}
         >
-          <h3>{company}</h3>
-          <p>{role}</p>
-          {location && <p>{location}</p>}
+          <p className="card-company">{company}</p>
+          <p className="card-role">{role}</p>
+          {location && <p className="card-location">{location}</p>}
         </div>
       )}
     </Draggable>

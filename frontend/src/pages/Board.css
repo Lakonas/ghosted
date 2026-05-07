@@ -1,0 +1,12 @@
+.board-container {
+  min-height: calc(100vh - 56px);
+  background: var(--bg);
+}
+
+.board {
+  display: flex;
+  gap: 12px;
+  padding: 24px;
+  overflow-x: auto;
+  align-items: flex-start;
+}

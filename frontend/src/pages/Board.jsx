@@ -4,6 +4,7 @@ import api from '../api/axios';
 import Column from '../components/Column';
 import ApplicationModal from '../components/ApplicationModal';
 import Navbar from '../components/Navbar';
+import './Board.css';
 
 const STATUSES = ['saved', 'applied', 'phone_screen', 'interview', 'offer', 'rejected', 'ghosted'];
 
@@ -57,8 +58,8 @@ const Board = () => {
   };
   return (
     <DragDropContext onDragEnd={onDragEnd}>
-      <div>
-        <Navbar onAdd={() => setShowModal(true)} /> {/* NEW */}
+      <div className="board-container">
+        <Navbar onAdd={() => setShowModal(true)} />
         <div className="board">
           {STATUSES.map(status => (
             <Column

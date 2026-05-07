@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import api from '../api/axios';
+import './ApplicationModal.css';
 
 const ApplicationModal = ({ onClose, onAdd }) => {
   const [form, setForm] = useState({
@@ -41,8 +42,10 @@ const ApplicationModal = ({ onClose, onAdd }) => {
           <input name="salary_max" type="number" placeholder="Salary max" value={form.salary_max} onChange={handleChange} />
           <input name="applied_at" type="date" value={form.applied_at} onChange={handleChange} />
           <textarea name="notes" placeholder="Notes" value={form.notes} onChange={handleChange} />
-          <button type="submit">Add</button>
-          <button type="button" onClick={onClose}>Cancel</button>
+          <div className="modal-actions"> {/* NEW */}
+            <button className="btn-ghost" type="button" onClick={onClose}>Cancel</button> {/* NEW */}
+            <button className="btn-primary" type="submit">Add</button> {/* NEW */}
+          </div>
         </form>
       </div>
     </div>
