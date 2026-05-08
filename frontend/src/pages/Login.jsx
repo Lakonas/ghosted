@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import api from '../api/axios';
 import { useAuth } from '../context/AuthContext';
+import './Login.css';
 
 const Login = () => {
   const [form, setForm] = useState({ email: '', password: '' });
@@ -25,16 +26,18 @@ const Login = () => {
   };
 
   return (
-    <div>
-      <h1>Ghosted</h1>
-      <h2>Sign in</h2>
-      {error && <p>{error}</p>}
-      <form onSubmit={handleSubmit}>
-        <input name="email" type="email" placeholder="Email" value={form.email} onChange={handleChange} required />
-        <input name="password" type="password" placeholder="Password" value={form.password} onChange={handleChange} required />
-        <button type="submit">Sign in</button>
-      </form>
-      <p>No account? <Link to="/register">Register</Link></p>
+    <div className="auth-container">
+      <div className="auth-card">
+        <span className="auth-logo">Ghosted</span>
+        <h2>Sign in</h2>
+        {error && <p className="auth-error">{error}</p>}
+        <form className="auth-form" onSubmit={handleSubmit}>
+          <input name="email" type="email" placeholder="Email" value={form.email} onChange={handleChange} required />
+          <input name="password" type="password" placeholder="Password" value={form.password} onChange={handleChange} required />
+          <button type="submit">Sign in</button>
+        </form>
+        <p className="auth-footer">No account? <Link to="/register">Register</Link></p>
+      </div>
     </div>
   );
 };
