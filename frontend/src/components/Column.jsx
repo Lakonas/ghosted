@@ -12,7 +12,7 @@ const STATUS_COLORS = {
   ghosted: 'var(--ghosted)',
 };
 
-const Column = ({ id, title, applications }) => {
+const Column = ({ id, title, applications,onDelete }) => {
   return (
     <div className="column">
       <div className="column-header">
@@ -28,7 +28,7 @@ const Column = ({ id, title, applications }) => {
             {...provided.droppableProps}
           >
             {applications.map((app, index) => (
-              <ApplicationCard key={app.id} application={app} index={index} />
+              <ApplicationCard key={app.id} application={app} index={index} onDelete={onDelete} />
             ))}
             {provided.placeholder}
           </div>

@@ -8,7 +8,9 @@ import './Board.css';
 import StatsPanel from '../components/StatsPanel'; // NEW
 
 const STATUSES = ['saved', 'applied', 'phone_screen', 'interview', 'offer', 'rejected', 'ghosted'];
-
+const handleDelete = (id) => {
+  setApplications(prev => prev.filter(app => app.id !== id));
+};
 const LABELS = {
   saved: 'Saved',
   applied: 'Applied',
@@ -65,11 +67,12 @@ const Board = () => {
         <div className="board">
           {STATUSES.map(status => (
             <Column
-              key={status}
-              id={status}
-              title={LABELS[status]}
-              applications={getByStatus(status)}
-            />
+            key={status}
+            id={status}
+            title={LABELS[status]}
+            applications={getByStatus(status)}
+            onDelete={handleDelete} // NEW
+          />
           ))}
         </div>
         {showModal && <ApplicationModal onClose={() => setShowModal(false)} onAdd={handleAdd} />}
