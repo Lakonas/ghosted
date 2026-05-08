@@ -29,6 +29,7 @@ const Login = () => {
     <div className="auth-container">
       <div className="auth-card">
         <span className="auth-logo">Ghosted</span>
+        <p className="auth-tagline">Track your applications. Embrace the silence.</p>
         <h2>Sign in</h2>
         {error && <p className="auth-error">{error}</p>}
         <form className="auth-form" onSubmit={handleSubmit}>

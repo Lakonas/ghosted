@@ -1,3 +1,20 @@
+.card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-left: 3px solid var(--card-status-color, var(--border)); /* NEW */
+  border-radius: 6px;
+  padding: 12px;
+  cursor: grab;
+  transition: box-shadow 0.15s ease;
+}
+
+
+
+
+
+
+
+
 .card-header {
   display: flex;
   justify-content: space-between;

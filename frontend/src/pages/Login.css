@@ -83,3 +83,9 @@
   color: var(--accent);
   text-decoration: none;
 }
+
+.auth-tagline {
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+  margin-top: -16px;
+}

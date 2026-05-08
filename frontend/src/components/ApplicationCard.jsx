@@ -2,11 +2,21 @@ import './ApplicationCard.css';
 import { Draggable } from '@hello-pangea/dnd';
 import api from '../api/axios';
 
+const STATUS_COLORS = {
+  saved: 'var(--saved)',
+  applied: 'var(--applied)',
+  phone_screen: 'var(--phone-screen)',
+  interview: 'var(--interview)',
+  offer: 'var(--offer)',
+  rejected: 'var(--rejected)',
+  ghosted: 'var(--ghosted)',
+};
+
 const ApplicationCard = ({ application, index, onDelete }) => {
-  const { id, company, role, location } = application;
+  const { id, company, role, location, status } = application;
 
   const handleDelete = async (e) => {
-    e.stopPropagation(); // prevent drag from firing
+    e.stopPropagation();
     try {
       await api.delete(`/applications/${id}`);
       onDelete(id);
@@ -23,6 +33,10 @@ const ApplicationCard = ({ application, index, onDelete }) => {
           ref={provided.innerRef}
           {...provided.draggableProps}
           {...provided.dragHandleProps}
+          style={{
+            ...provided.draggableProps.style,
+            borderLeftColor: STATUS_COLORS[status],
+          }}
         >
           <div className="card-header">
             <p className="card-company">{company}</p>
