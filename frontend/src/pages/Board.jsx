@@ -5,12 +5,10 @@ import Column from '../components/Column';
 import ApplicationModal from '../components/ApplicationModal';
 import Navbar from '../components/Navbar';
 import './Board.css';
-import StatsPanel from '../components/StatsPanel'; // NEW
+import StatsPanel from '../components/StatsPanel';
 
 const STATUSES = ['saved', 'applied', 'phone_screen', 'interview', 'offer', 'rejected', 'ghosted'];
-const handleDelete = (id) => {
-  setApplications(prev => prev.filter(app => app.id !== id));
-};
+
 const LABELS = {
   saved: 'Saved',
   applied: 'Applied',
@@ -34,6 +32,14 @@ const Board = () => {
       .filter(app => app.status === status)
       .sort((a, b) => a.position - b.position);
 
+  const handleDelete = (id) => {
+    setApplications(prev => prev.filter(app => app.id !== id));
+  };
+
+  const handleAdd = (newApp) => {
+    setApplications(prev => [...prev, newApp]);
+  };
+
   const onDragEnd = async (result) => {
     const { draggableId, source, destination } = result;
 
@@ -43,7 +49,6 @@ const Board = () => {
     const newStatus = destination.droppableId;
     const id = parseInt(draggableId);
 
-    // optimistic update
     setApplications(prev =>
       prev.map(app =>
         app.id === id ? { ...app, status: newStatus, position: destination.index } : app
@@ -56,9 +61,7 @@ const Board = () => {
       console.error('Failed to update application', err);
     }
   };
-  const handleAdd = (newApp) => {
-    setApplications(prev => [...prev, newApp]);
-  };
+
   return (
     <DragDropContext onDragEnd={onDragEnd}>
       <div className="board-container">
@@ -67,12 +70,12 @@ const Board = () => {
         <div className="board">
           {STATUSES.map(status => (
             <Column
-            key={status}
-            id={status}
-            title={LABELS[status]}
-            applications={getByStatus(status)}
-            onDelete={handleDelete} // NEW
-          />
+              key={status}
+              id={status}
+              title={LABELS[status]}
+              applications={getByStatus(status)}
+              onDelete={handleDelete}
+            />
           ))}
         </div>
         {showModal && <ApplicationModal onClose={() => setShowModal(false)} onAdd={handleAdd} />}
