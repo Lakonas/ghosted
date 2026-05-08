@@ -5,6 +5,7 @@ import Column from '../components/Column';
 import ApplicationModal from '../components/ApplicationModal';
 import Navbar from '../components/Navbar';
 import './Board.css';
+import StatsPanel from '../components/StatsPanel'; // NEW
 
 const STATUSES = ['saved', 'applied', 'phone_screen', 'interview', 'offer', 'rejected', 'ghosted'];
 
@@ -60,6 +61,7 @@ const Board = () => {
     <DragDropContext onDragEnd={onDragEnd}>
       <div className="board-container">
         <Navbar onAdd={() => setShowModal(true)} />
+        <StatsPanel applications={applications} />
         <div className="board">
           {STATUSES.map(status => (
             <Column
