@@ -1,16 +1,43 @@
-# React + Vite
+# Ghosted
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Track your job applications. Embrace the silence.
 
-Currently, two official plugins are available:
+**[ghosted-psi.vercel.app](https://ghosted-psi.vercel.app)**
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## What it does
 
-## React Compiler
+Kanban board for job seekers. Drag applications across stages, track where things stand, watch your response rate in real time.
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+**Stages:** Saved → Applied → Phone Screen → Interview → Offer → Rejected → Ghosted
 
-## Expanding the ESLint configuration
+## Stack
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+- **Frontend:** React, Vite, @hello-pangea/dnd
+- **Backend:** Node.js, Express
+- **Database:** PostgreSQL (raw SQL)
+- **Auth:** JWT
+- **Deployed:** Vercel (frontend), Railway (backend + DB)
+
+## Features
+
+- Kanban board with drag-and-drop persistence
+- JWT authentication
+- Live stats: total applications, response rate, rejection rate, active count
+- Add and delete applications
+- Status-coded columns and cards
+
+## Local setup
+
+```bash
+# Backend
+cd backend
+npm install
+# create .env with DB_* and JWT_SECRET
+nodemon index.js
+
+# Frontend
+cd frontend
+npm install
+# create .env with VITE_API_URL
+npm run dev
+```
