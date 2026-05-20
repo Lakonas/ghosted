@@ -21,7 +21,7 @@ const Register = () => {
       login(res.data.token, res.data.user);
       navigate('/board');
     } catch (err) {
-      setError(err.response?.data?.error || 'Registration failed');
+      setError(err.response?.data?.error?.message || err.response?.data?.error || 'Registration failed');
     }
   };
 
